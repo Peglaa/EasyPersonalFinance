@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bills.BillsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppThemeBar"
+        android:elevation="4dp"
+        app:title="Bills"
+        />
+
+    <Spinner
+        android:id="@+id/sBillsMonthSpinner"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="30dp"
+        android:scrollbarSize="80dp"
+        />
+
+    <TextView
+        android:id="@+id/tvBillsTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_above="@id/billsRecycler"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/test123135"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/total"
+        android:layout_above="@+id/billsRecycler"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/tvBillsTotal"
+        android:textColor="#000000"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/billsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sBillsMonthSpinner"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        android:layout_marginTop="60dp"
+        />
+
+    <View
+        android:layout_width="370dp"
+        android:layout_height="0.5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/sBillsMonthSpinner"
+        android:layout_marginTop="15dp"/>
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_alignParentEnd="true"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addBillsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:elevation="4dp"
+            app:fabSize="normal"
+            android:scaleType="center"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container_bills"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

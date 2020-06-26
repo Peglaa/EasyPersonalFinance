@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".income.AddIncomeFragment"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#FFFFFF">
+
+    <Spinner
+        android:id="@+id/incomeTypeSpinner"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        />
+
+    <TextView
+        android:id="@+id/tvIncomeDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/incomeTypeSpinner"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/etAmount"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tvIncomeDesc"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:hint="@string/amount"
+        android:inputType="numberDecimal"
+        android:autofillHints="@string/amount"
+        />
+
+    <TextView
+        android:id="@+id/tvCurrency"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/tvIncomeDesc"
+        android:layout_marginTop="30dp"
+        android:text="@string/kune"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/etAmount"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        />
+
+    <View
+        android:layout_width="296dp"
+        android:layout_height="1.9dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/tvDate"
+        android:layout_marginStart="61dp"
+        />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/tvCurrency"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_date_range_black_24dp"
+        android:contentDescription="@string/currency_desc"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddIncome"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:fabSize="normal"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="5dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tabs.IncomeTab">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Spinner
+        android:id="@+id/sIncomeTabMonthSpinner"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbarSize="80dp"
+        />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/incomePieChart"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sIncomeTabMonthSpinner"
+        android:layout_marginTop="40dp"
+        />
+
+    <ListView
+        android:id="@+id/incomeListView"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/incomePieChart"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:nestedScrollingEnabled="true"/>
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

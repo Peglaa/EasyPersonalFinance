@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">EasyPersonalFinance</string>
+    <string name="income">Income</string>
+    <string name="bills">Bills</string>
+    <string name="expenses">Expenses</string>
+    <string name="app_title">EasyPersonalFinance</string>
+    <string name="select_inspection">Select an item to inspect</string>
+    <string name="appicon_desc">AppIcon</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="strtest">TESTtest</string>
+    <string name="kune">kn</string>
+    <string name="currency_desc">Currency</string>
+    <string name="amount">Please enter an amount</string>
+    <string name="salaryincomedesc">Salary income</string>
+    <string name="brokerageincomedesc">Income from Brokerage</string>
+    <string name="giftincomedesc">Income/money received as a gift</string>
+    <string name="businessincomedesc">Income from Business</string>
+    <string name="interesetincomedesc">Bank interest etc.</string>
+    <string name="loanincomedesc">Loan income</string>
+    <string name="rentalincomedesc">Rental income</string>
+    <string name="salesincomedesc">Income from sales</string>
+    <string name="otherincomedesc">Income from other sources</string>
+    <string name="total">Total: kn</string>
+    <string name="test123135">Test123135</string>
+    <string name="duedate">Due date</string>
+    <string name="expensedate">Date of expense</string>
+    <string name="bill_content_desc">Bill</string>
+    <string name="finance_icon">finance_icon</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="incomeimage">incomeImage</string>
+    <string name="expense_image">expense_image</string>
+    <string name="tvtally">Income tally: kn &#160;</string>
+    <string name="home">Home</string>
+    <string name="_12_12_12">12/12/12</string>
+
+</resources>

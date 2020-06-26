@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".income.IncomeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppThemeBar"
+        android:elevation="4dp"
+        app:title="Income"
+        />
+
+    <Spinner
+        android:id="@+id/sMonthSpinner"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="30dp"
+        android:scrollbarSize="80dp"
+        />
+
+    <TextView
+        android:id="@+id/tvIncomeTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_above="@id/incomeRecycler"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/test123135"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/total"
+        android:layout_above="@+id/incomeRecycler"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/tvIncomeTotal"
+        android:textColor="#000000"/>
+
+    <View
+        android:layout_width="370dp"
+        android:layout_height="0.5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/sMonthSpinner"
+        android:layout_marginTop="15dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/incomeRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sMonthSpinner"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        android:layout_marginTop="60dp"
+        />
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_alignParentEnd="true"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addIncomeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:elevation="4dp"
+            app:fabSize="normal"
+            android:scaleType="center"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
