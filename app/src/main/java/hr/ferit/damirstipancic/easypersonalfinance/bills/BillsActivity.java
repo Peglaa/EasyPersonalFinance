@@ -60,6 +60,11 @@ public class BillsActivity extends AppCompatActivity implements AdapterView.OnIt
         setupBillsRecycler();
         setupSpinner();
         setupAddBillButton();
+        try {
+            checkDates(returnAllItems());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 
