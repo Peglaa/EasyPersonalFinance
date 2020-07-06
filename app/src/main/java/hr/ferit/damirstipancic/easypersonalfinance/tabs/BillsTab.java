@@ -201,6 +201,7 @@ public class BillsTab extends Fragment implements AdapterView.OnItemSelectedList
             pieChart.getLegend().setEnabled(false);
             pieChart.getDescription().setEnabled(false);
             pieChart.invalidate();
+            pieChart.animateY(1000);
         }
     }
 

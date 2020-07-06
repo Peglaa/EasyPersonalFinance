@@ -203,6 +203,7 @@ public class IncomeTab extends Fragment implements AdapterView.OnItemSelectedLis
             pieChart.getLegend().setEnabled(false);
             pieChart.getDescription().setEnabled(false);
             pieChart.invalidate();
+            pieChart.animateY(1000);
         }
     }
 
