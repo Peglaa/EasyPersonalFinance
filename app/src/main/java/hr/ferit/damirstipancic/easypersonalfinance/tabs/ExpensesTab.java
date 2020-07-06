@@ -201,6 +201,7 @@ public class ExpensesTab extends Fragment implements AdapterView.OnItemSelectedL
             pieChart.getLegend().setEnabled(false);
             pieChart.getDescription().setEnabled(false);
             pieChart.invalidate();
+            pieChart.animateY(1000);
         }
     }
 
