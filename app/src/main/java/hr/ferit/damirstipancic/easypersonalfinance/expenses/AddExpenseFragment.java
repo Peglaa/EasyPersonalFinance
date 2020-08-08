@@ -106,15 +106,19 @@ public class AddExpenseFragment extends Fragment implements AdapterView.OnItemSe
         tvExpenseDate = requireActivity().findViewById(R.id.tvExpenseFragmentDate);
         etExpenseAmount = requireActivity().findViewById(R.id.etExpenseAmount);
 
+        //Get current Date
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         mMonth = c.get(Calendar.MONTH)+1;
 
+        //Format the current date with FULL format
         DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
         date = fullFormatter.format(currentDate);
+
+        //Style the date for viewing
         int day = date.indexOf(",");
-        String shortDate = date.substring(0, day).substring(0,3);
+        String shortDate = date.substring(0,3);
         date = shortDate + ", " + date.substring(day+1);
         tvExpenseDate.setText(date);
     }
@@ -140,6 +144,8 @@ public class AddExpenseFragment extends Fragment implements AdapterView.OnItemSe
                 month++;
                 mMonth = month;
                 date = dayOfMonth + "/" + month + "/" + year;
+
+                //Parse the selected date into Date format
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
                 Date temp = null;
                 try {
@@ -147,10 +153,14 @@ public class AddExpenseFragment extends Fragment implements AdapterView.OnItemSe
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
+                //Convert selected date to FULL format
                 DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
                 if (temp != null) {
                     date = fullFormatter.format(temp);
                 }
+
+                //Style the date for viewing
                 int day = date.indexOf(",");
                 String shortDate = date.substring(0, day).substring(0,3);
                 date = shortDate + ", " + date.substring(day+1);

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,17 +98,24 @@ public class AddBillFragment extends Fragment implements AdapterView.OnItemSelec
         TextView tvDateDesc = requireView().findViewById(R.id.tvDueDateDesc);
         etBillAmount = requireView().findViewById(R.id.etBillAmount);
 
+        //Get current date
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
         mMonth = c.get(Calendar.MONTH)+1;
 
+        //Format the current Date with FULL format type
         DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
         DateFormat shortFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
         date = fullFormatter.format(currentDate);
-        int day = date.indexOf(",");
-        String shortDate = date.substring(0, day).substring(0,3);
-        date = shortDate + ", " + date.substring(day+1);
+
+        //Style current date for viewing
+        int firstComma = date.indexOf(",");
+        String shortDay = date.substring(0,3);
+        date = shortDay + ", " + date.substring(firstComma+1);
         tvBillDate.setText(date);
+
+        //Convert to short format for DB storage
         date = shortFormatter.format(currentDate);
         tvDateDesc.setText(R.string.duedate);
 
@@ -134,6 +142,8 @@ public class AddBillFragment extends Fragment implements AdapterView.OnItemSelec
                 month++;
                 mMonth = month;
                 date = dayOfMonth + "/" + month + "/" + year;
+
+                //Parse selected date into Date format
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
                 Date temp = null;
                 try {
@@ -141,15 +151,21 @@ public class AddBillFragment extends Fragment implements AdapterView.OnItemSelec
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
+                //Apply the FULL format to the selected date
                 DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
                 DateFormat shortFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
                 if (temp != null) {
                     date = fullFormatter.format(temp);
                 }
-                int day = date.indexOf(",");
-                String shortDate = date.substring(0, day).substring(0,3);
-                date = shortDate + ", " + date.substring(day+1);
+
+                //Style the text for viewing
+                int firstComma = date.indexOf(",");
+                String shortDay = date.substring(0,3);
+                date = shortDay + ", " + date.substring(firstComma+1);
                 tvBillDate.setText(date);
+
+                //Convert to short format for DB storage
                 if (temp != null) {
                     date = shortFormatter.format(temp);
                 }
