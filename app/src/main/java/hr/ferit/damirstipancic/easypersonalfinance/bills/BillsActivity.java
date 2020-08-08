@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -284,16 +283,13 @@ public class BillsActivity extends AppCompatActivity implements AdapterView.OnIt
     public void checkDates(Cursor mCursor) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
         Date currentDate = new Date();
-        Log.d("TAG", "currentDate: " + currentDate);
 
         if (mCursor.moveToPosition(0)) {
-            Log.d("TAG", "DBDate: " + dateFormat.parse(mCursor.getString(mCursor.getColumnIndex(DataContract.BillsEntry.COLUMN_DATE))));
             if ((Objects.requireNonNull(dateFormat.parse(mCursor.getString(mCursor.getColumnIndex(DataContract.BillsEntry.COLUMN_DATE))))).before(currentDate)) {
                 updateDateText(mCursor);
             }
 
             while (mCursor.move(1)) {
-                Log.d("TAG", "offsetDate: " + dateFormat.parse(mCursor.getString(mCursor.getColumnIndex(DataContract.BillsEntry.COLUMN_DATE))));
                 if (Objects.requireNonNull(dateFormat.parse(mCursor.getString(mCursor.getColumnIndex(DataContract.BillsEntry.COLUMN_DATE)))).before(currentDate)) {
                     updateDateText(mCursor);
                 }
@@ -308,7 +304,6 @@ public class BillsActivity extends AppCompatActivity implements AdapterView.OnIt
         ContentValues cv = new ContentValues();
         cv.put(DataContract.BillsEntry.COLUMN_OVERDUE, 1);
         mDatabase.update(DataContract.BillsEntry.TABLE_NAME, cv, "_ID=" + mCursor.getLong(mCursor.getColumnIndex(DataContract.BillsEntry._ID)), null);
-        Log.d("TAG", "updateDateText: " + mCursor.getInt(mCursor.getColumnIndex(DataContract.BillsEntry.COLUMN_OVERDUE)));
 
     }
 

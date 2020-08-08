@@ -116,13 +116,17 @@ public class AddIncomeFragment extends Fragment implements AdapterView.OnItemSel
         incomeTypeSpinner = requireView().findViewById(R.id.incomeTypeSpinner);
         confirmIncome = requireView().findViewById(R.id.btnAddIncome);
 
+        //Get current Date
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         mMonth = c.get(Calendar.MONTH)+1;
 
+        //Format the curret date to FULL date format
         DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
         date = fullFormatter.format(currentDate);
+
+        //Style the date for viewing
         int day = date.indexOf(",");
         String shortDate = date.substring(0, day).substring(0,3);
         date = shortDate + ", " + date.substring(day+1);
@@ -157,6 +161,8 @@ public class AddIncomeFragment extends Fragment implements AdapterView.OnItemSel
                 month++;
                 mMonth = month;
                 date = dayOfMonth + "/" + month + "/" + year;
+
+                //Convert selected date to Date format
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
                 Date temp = null;
                 try {
@@ -164,10 +170,14 @@ public class AddIncomeFragment extends Fragment implements AdapterView.OnItemSel
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
+                //Format the selected date to FULL format
                 DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
                 if (temp != null) {
                     date = fullFormatter.format(temp);
                 }
+
+                //Style the date for viewing
                 int day = date.indexOf(",");
                 String shortDate = date.substring(0, day).substring(0,3);
                 date = shortDate + ", " + date.substring(day+1);
