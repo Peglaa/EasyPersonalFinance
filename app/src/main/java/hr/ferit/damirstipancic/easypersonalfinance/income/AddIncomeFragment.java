@@ -122,7 +122,7 @@ public class AddIncomeFragment extends Fragment implements AdapterView.OnItemSel
         c.setTime(currentDate);
         mMonth = c.get(Calendar.MONTH)+1;
 
-        //Format the curret date to FULL date format
+        //Format the current date to FULL date format
         DateFormat fullFormatter = DateFormat.getDateInstance(DateFormat.FULL);
         date = fullFormatter.format(currentDate);
 
