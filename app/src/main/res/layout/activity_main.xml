@@ -25,45 +25,17 @@
             android:elevation="4dp"/>
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/mainTabLayout"
-            android:layout_height="50dp"
+            android:id="@+id/tabLayout"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_below="@id/toolbar">
-            
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home"
-                />
+            android:layout_below="@id/toolbar"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/income"
-                />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bills"
-                />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/expenses"
-                />
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/mainViewPager"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/mainTabLayout">
+            android:layout_below="@id/tabLayout"/>
 
-
-        </androidx.viewpager.widget.ViewPager>
 
     </RelativeLayout>
 

@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +25,9 @@ import hr.ferit.damirstipancic.easypersonalfinance.income.IncomeActivity;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    private ViewPager viewPager;
-    public PageAdapter pageAdapter;
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+    TabsAdapter tabsAdapter;
 
 
     @Override
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setupTabs();
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -45,39 +50,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        setupTabs();
-
     }
 
     private void setupTabs() {
 
-        TabLayout mainTabLayout = findViewById(R.id.mainTabLayout);
-        mainTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        mainTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        viewPager = findViewById(R.id.mainViewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager2 = findViewById(R.id.viewPager2);
 
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), mainTabLayout.getTabCount());
-        viewPager.setAdapter(pageAdapter);
-        viewPager.setOffscreenPageLimit(2);
+        FragmentManager fm = getSupportFragmentManager();
+        tabsAdapter = new TabsAdapter(fm, getLifecycle());
+        viewPager2.setAdapter(tabsAdapter);
+        viewPager2.setOffscreenPageLimit(2);
 
-        mainTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addTab(tabLayout.newTab().setText("Home"));
+        tabLayout.addTab(tabLayout.newTab().setText("Income"));
+        tabLayout.addTab(tabLayout.newTab().setText("Bills"));
+        tabLayout.addTab(tabLayout.newTab().setText("Expenses"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                viewPager2.setCurrentItem(tab.getPosition());
 
-                if(tab.getPosition() == 0){
-                    pageAdapter.notifyDataSetChanged();
-
-                } else if (tab.getPosition() == 1){
-                    pageAdapter.notifyDataSetChanged();
-
-                } else if (tab.getPosition() == 2){
-                    pageAdapter.notifyDataSetChanged();
-
-                } else if (tab.getPosition() == 3){
-                    pageAdapter.notifyDataSetChanged();
-
-                }
             }
 
 
@@ -92,7 +86,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mainTabLayout));
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
 
     }
 
