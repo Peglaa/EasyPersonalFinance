@@ -77,19 +77,19 @@ public class HomeTab extends Fragment implements AdapterView.OnItemSelectedListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView tvTally = requireActivity().findViewById(R.id.tvTally);
-        tvIncomeTally = requireActivity().findViewById(R.id.tvIncomeTally);
+        TextView tvTally = view.findViewById(R.id.tvTally);
+        tvIncomeTally = view.findViewById(R.id.tvIncomeTally);
         tvTally.setText(R.string.tvtally);
         tvTally.setTextColor(Color.BLACK);
 
         setupDBAdapters();
-        setupSpinner();
+        setupSpinner(view);
 
     }
 
-    private void setupSpinner() {
+    private void setupSpinner(View view) {
 
-        Spinner mainMonthSpinner = requireActivity().findViewById(R.id.sMainMonthSpinner);
+        Spinner mainMonthSpinner = view.findViewById(R.id.sMainMonthSpinner);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, months);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mainMonthSpinner.setAdapter(spinnerAdapter);
@@ -192,7 +192,7 @@ public class HomeTab extends Fragment implements AdapterView.OnItemSelectedListe
     }
 
     private void setupBarChart() {
-        BarChart barChart = requireActivity().findViewById(R.id.mainBarChart);
+        BarChart barChart = requireView().findViewById(R.id.mainBarChart);
         barChart.getDescription().setEnabled(false);
         barChart.getLegend().setEnabled(false);
         barChart.getAxisLeft().setDrawGridLines(false);
@@ -240,7 +240,7 @@ public class HomeTab extends Fragment implements AdapterView.OnItemSelectedListe
         if(financeAmounts[2] != 0.0)
             expensePercentage = financeAmounts[2]/(financeAmounts[0]+financeAmounts[1]+financeAmounts[2]) * 100;
 
-        ListView listView = requireActivity().findViewById(R.id.mainListView);
+        ListView listView = requireView().findViewById(R.id.mainListView);
         ArrayList<FinanceTypeItem> financeTypeList = new ArrayList<>();
         financeTypeList.add(new FinanceTypeItem("Income: " + financeAmounts[0] + " (" + round(incomePercentage, 2) + "%)", R.drawable.revenue128));
         financeTypeList.add(new FinanceTypeItem("Bills: " + financeAmounts[1] + " (" + round(billPercentage, 2) + "%)", R.drawable.receipt128));

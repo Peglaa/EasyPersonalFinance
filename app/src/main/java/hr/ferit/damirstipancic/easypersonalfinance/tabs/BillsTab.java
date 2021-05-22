@@ -75,12 +75,12 @@ public class BillsTab extends Fragment implements AdapterView.OnItemSelectedList
         FinanceDBHelper dbHelper = new FinanceDBHelper(requireContext());
         mDatabase = dbHelper.getWritableDatabase();
 
-        setupSpinner();
+        setupSpinner(view);
     }
 
-    private void setupSpinner() {
+    private void setupSpinner(View view) {
 
-        Spinner billsMonthSpinner = requireActivity().findViewById(R.id.sBillsTabMonthSpinner);
+        Spinner billsMonthSpinner = view.findViewById(R.id.sBillsTabMonthSpinner);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, months);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         billsMonthSpinner.setAdapter(spinnerAdapter);
@@ -179,7 +179,7 @@ public class BillsTab extends Fragment implements AdapterView.OnItemSelectedList
 
     private void setupPieChart() {
 
-        PieChart pieChart = requireActivity().findViewById(R.id.billsPieChart);
+        PieChart pieChart = requireView().findViewById(R.id.billsPieChart);
         if (financeAmounts.length == 0) {
             pieChart.invalidate();
             pieChart.clear();
@@ -217,7 +217,7 @@ public class BillsTab extends Fragment implements AdapterView.OnItemSelectedList
             percentage[i] = financeAmounts[i]/total*100;
         }
 
-        ListView listView = requireActivity().findViewById(R.id.billsListView);
+        ListView listView = requireView().findViewById(R.id.billsListView);
         ArrayList<FinanceTypeItem> financeTypeList = new ArrayList<>();
         for(int i = 0; i < financeAmounts.length; i++) {
 
