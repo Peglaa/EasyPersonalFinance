@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 public class UtilityClass {
@@ -26,5 +28,10 @@ public class UtilityClass {
 
         // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark));
+    }
+
+    public static void setupToolbar(AppCompatActivity activity, int toolbar_resource){
+        Toolbar toolbar = activity.findViewById(toolbar_resource);
+        activity.setSupportActionBar(toolbar);
     }
 }

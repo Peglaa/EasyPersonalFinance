@@ -1,6 +1,7 @@
 package android.damir.stipancic.com.easypersonalfinancev2.income;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.damir.stipancic.com.easypersonalfinancev2.R;
 import android.damir.stipancic.com.easypersonalfinancev2.UtilityClass;
@@ -15,5 +16,7 @@ public class IncomeActivity extends AppCompatActivity {
 
         //colorPrimaryDark not working to set status bar color so I have to do this??!?!?
         UtilityClass.setStatusBarColor(this);
+        UtilityClass.setupToolbar(this, R.id.income_toolbar);
+        if(getSupportActionBar() != null) getSupportActionBar().setTitle(R.string.income_title);
     }
 }
