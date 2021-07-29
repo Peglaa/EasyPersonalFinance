@@ -6,20 +6,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.damir.stipancic.com.easypersonalfinancev2.bills.BillsActivity;
 import android.damir.stipancic.com.easypersonalfinancev2.expenses.ExpensesActivity;
 import android.damir.stipancic.com.easypersonalfinancev2.income.IncomeActivity;
+import android.damir.stipancic.com.easypersonalfinancev2.tabs.TabsAdapter;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mNavDrawer;
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
+    private TabLayout mTabLayout;
+    private ViewPager2 mViewPager2;
+    private TabsAdapter mTabsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         UtilityClass.setStatusBarColor(this);
         setupToolbar();
         setupNavDrawer();
+        setupTabs();
     }
 
     private void setupToolbar() {
-        toolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
     }
 
     private void setupNavDrawer() {
@@ -43,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mNavDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mNavDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         mNavDrawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
@@ -72,6 +80,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mNavDrawer.closeDrawer(GravityCompat.START);
             return true;
         }
+    }
+
+    private void setupTabs() {
+
+        mTabLayout = findViewById(R.id.mainTabLayout);
+        mViewPager2 = findViewById(R.id.mainViewPager);
+
+        FragmentManager fm = getSupportFragmentManager();
+        mTabsAdapter = new TabsAdapter(fm, getLifecycle());
+        mViewPager2.setAdapter(mTabsAdapter);
+
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.home_title));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.income_title));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.bills_title));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.expenses_title));
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager2.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                mTabLayout.selectTab(mTabLayout.getTabAt(position));
+            }
+        });
     }
 
     @Override

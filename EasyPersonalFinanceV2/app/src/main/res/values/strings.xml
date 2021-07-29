@@ -13,4 +13,6 @@
     <string name="income_title">Income</string>
     <string name="expenses_title">Expenses</string>
     <string name="bills_title">Bills</string>
+    <string name="home_title">Home</string>
+
 </resources>
