@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EasyPersonalFinanceV2</string>
+    <string name="income_menu_item">Income</string>
+    <string name="bills_menu_item">Bills</string>
+    <string name="expenses_menu_item">Expenses</string>
+
+    <string name="app_title">EasyPersonalFinance</string>
+    <string name="select_inspection">Select an item to inspect</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>
