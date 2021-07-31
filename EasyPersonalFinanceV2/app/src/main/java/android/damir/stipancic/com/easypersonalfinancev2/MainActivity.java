@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import io.realm.Realm;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mNavDrawer;
@@ -32,9 +34,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Realm.init(this);
 
         //colorPrimaryDark not working to set status bar color so I have to do this??!?!?
         UtilityClass.setStatusBarColor(this);
+
         setupToolbar();
         setupNavDrawer();
         setupTabs();
