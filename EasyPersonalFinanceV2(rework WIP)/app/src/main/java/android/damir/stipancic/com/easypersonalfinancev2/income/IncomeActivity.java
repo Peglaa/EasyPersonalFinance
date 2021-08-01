@@ -14,8 +14,6 @@ public class IncomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income);
 
-        //colorPrimaryDark not working to set status bar color so I have to do this??!?!?
-        UtilityClass.setStatusBarColor(this);
         UtilityClass.setupToolbar(this, R.id.income_toolbar);
         if(getSupportActionBar() != null) getSupportActionBar().setTitle(R.string.income_title);
     }

@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Realm.init(this);
 
-        //colorPrimaryDark not working to set status bar color so I have to do this??!?!?
-        UtilityClass.setStatusBarColor(this);
-
         setupToolbar();
         setupNavDrawer();
         setupTabs();

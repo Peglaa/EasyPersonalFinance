@@ -14,8 +14,6 @@ public class ExpensesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
-        //colorPrimaryDark not working to set status bar color so I have to do this??!?!?
-        UtilityClass.setStatusBarColor(this);
         UtilityClass.setupToolbar(this, R.id.expenses_toolbar);
         if(getSupportActionBar() != null) getSupportActionBar().setTitle(R.string.expenses_title);
     }
