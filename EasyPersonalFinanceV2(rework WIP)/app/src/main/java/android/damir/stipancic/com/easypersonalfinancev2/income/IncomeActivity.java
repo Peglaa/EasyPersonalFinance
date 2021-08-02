@@ -16,5 +16,7 @@ public class IncomeActivity extends AppCompatActivity {
 
         UtilityClass.setupToolbar(this, R.id.income_toolbar);
         if(getSupportActionBar() != null) getSupportActionBar().setTitle(R.string.income_title);
+
+
     }
 }

@@ -14,5 +14,6 @@
     <string name="expenses_title">Expenses</string>
     <string name="bills_title">Bills</string>
     <string name="home_title">Home</string>
+    <string name="image_desc">desc_image</string>
 
 </resources>
