@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TabLayout mTabLayout;
     private ViewPager2 mViewPager2;
     private TabsAdapter mTabsAdapter;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Realm.init(this);
 
         setupToolbar();
         setupNavDrawer();
