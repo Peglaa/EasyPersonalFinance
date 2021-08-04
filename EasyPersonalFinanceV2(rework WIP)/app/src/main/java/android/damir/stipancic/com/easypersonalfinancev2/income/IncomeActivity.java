@@ -37,10 +37,6 @@ public class IncomeActivity extends AppCompatActivity {
         setupRecycler();
 
         mRealm = Realm.getDefaultInstance();
-        FinanceEntry testEntry = new FinanceEntry(UUID.randomUUID(), 1, "Electricity", new Date(), new Date(), 1000, R.drawable.energy128);
-        mRealm.beginTransaction();
-        mRealm.insert(testEntry);
-        mRealm.commitTransaction();
 
         mFinanceEntries.addAll(mRealm.where(FinanceEntry.class).findAll());
 
