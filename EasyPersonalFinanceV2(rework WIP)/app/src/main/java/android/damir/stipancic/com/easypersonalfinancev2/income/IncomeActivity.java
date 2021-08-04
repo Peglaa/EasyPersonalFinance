@@ -1,7 +1,6 @@
 package android.damir.stipancic.com.easypersonalfinancev2.income;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +24,7 @@ public class IncomeActivity extends AppCompatActivity {
     private FinanceRecyclerAdapter mRvAdapter;
     private Realm mRealm;
     private ArrayList<FinanceEntry> mFinanceEntries = new ArrayList<>();
-    private RealmChangeListener mRealmListener;
+    private RealmChangeListener<Realm> mRealmListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

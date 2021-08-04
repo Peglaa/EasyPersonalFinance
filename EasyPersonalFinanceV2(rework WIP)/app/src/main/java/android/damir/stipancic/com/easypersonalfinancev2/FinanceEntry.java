@@ -1,15 +1,12 @@
 package android.damir.stipancic.com.easypersonalfinancev2;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import androidx.annotation.NonNull;
 
 import java.util.Date;
 import java.util.UUID;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.Required;
 
 public class FinanceEntry extends RealmObject {
 
@@ -85,6 +82,7 @@ public class FinanceEntry extends RealmObject {
         return mImage;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "FinanceEntry{" +
