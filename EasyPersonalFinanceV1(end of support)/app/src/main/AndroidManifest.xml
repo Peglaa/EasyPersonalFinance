@@ -14,11 +14,14 @@
         </activity>
         <activity
             android:name=".bills.BillsActivity"
-            android:theme="@style/AppThemeBar"></activity>
+            android:theme="@style/AppThemeBar"
+            android:exported="false" />
         <activity
             android:name=".income.IncomeActivity"
-            android:theme="@style/AppThemeBar"></activity>
-        <activity android:name=".MainActivity">
+            android:theme="@style/AppThemeBar"
+            android:exported="false" />
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
